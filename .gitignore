@@ -1,0 +1,24 @@
+
+# Ambiente Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Credenciais e variáveis de ambiente
+.env
+
+# Arquivos temporários
+*.tmp
+*.log
+
+# Cache
+.streamlit/secrets.toml
+
+# Arquivos gerados
+outputs/processed_videos/
+outputs/reports/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db

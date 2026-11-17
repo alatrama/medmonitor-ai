@@ -1,0 +1,10 @@
+streamlit
+pandas
+numpy
+scikit-learn
+python-dotenv
+matplotlib
+ultralytics
+opencv-python
+azure-cognitiveservices-speech
+azure-ai-textanalytics
