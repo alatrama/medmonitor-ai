@@ -109,10 +109,10 @@ medmonitor-ai/
 │
 ├── app.py
 ├── requirements.txt
-├── .env
-├── .env.example
+├── requirements-lock.txt
 ├── .gitignore
 ├── README.md
+├── yolov8n-pose.pt
 │
 ├── modules/
 │   ├── __init__.py
@@ -124,23 +124,55 @@ medmonitor-ai/
 │   ├── prescription_analysis.py
 │   └── multimodal_alerts.py
 │
-├── data/
-│
-├── outputs/
-│   ├── reports/
-│   └── processed_videos/
-│
 └── docs/
+    ├── resultados_experimentais.md
+    │
+    └── evidencias/
+        ├── 02-video.png
+        ├── 03-audio.png
+        ├── 04-texto.png
+        ├── 05-sinais-vitais.png
+        ├── 06-prescricoes.png
+        └── 07-central-alertas.png
 ```
 
-## 6. Configuração do ambiente
+## 6. Documentação e evidências
+
+A pasta `docs/` reúne os materiais complementares do projeto, permitindo consultar os resultados dos testes e visualizar as funcionalidades implementadas.
+
+### Resultados experimentais
+
+O arquivo [resultados_experimentais.md](docs/resultados_experimentais.md) apresenta os testes realizados, os resultados observados e as métricas obtidas durante a execução dos módulos.
+
+Entre os pontos documentados estão:
+
+- Resultados da análise de vídeo e identificação de movimentos.
+- Testes de transcrição e análise de áudio.
+- Detecção de anomalias em sinais vitais.
+- Comparação entre prescrições e administrações.
+- Consolidação das ocorrências na Central de Alertas Multimodais.
+
+### Evidências da aplicação
+
+A pasta [docs/evidencias](docs/evidencias/) contém capturas de tela da aplicação em funcionamento, demonstrando as principais funcionalidades desenvolvidas.
+
+| Evidência | Funcionalidade |
+|---|---|
+| 02-video.png | Análise de vídeo, repetições e amplitude de movimento |
+| 03-audio.png | Transcrição realizada pelo Azure Speech |
+| 04-texto.png | Análise de sentimento, frases-chave e alertas |
+| 05-sinais-vitais.png | Gráficos e anomalias identificadas pelo Isolation Forest |
+| 06-prescricoes.png | Comparação entre medicamentos prescritos e administrados |
+| 07-central-alertas.png | Consolidação multimodal dos resultados |
+
+## 7. Configuração do ambiente
 
 ### Pré-requisitos
 
 - Python 3.12.
 - Visual Studio Code ou outro editor Python.
 - Conta e recursos configurados no Microsoft Azure.
-- Conexão com a internet para utilização dos serviços Azure e download inicial do modelo YOLOv8.
+- Conexão com a internet para utilização dos serviços Azure e download de dependências.
 
 ### Instalação
 
@@ -167,7 +199,6 @@ Instale as dependências:
 
 ```bash
 pip install -r requirements.txt
-pip install azure-cognitiveservices-speech azure-ai-textanalytics
 ```
 
 ### Configuração do Azure
@@ -185,7 +216,7 @@ AZURE_LANGUAGE_ENDPOINT=seu_endpoint_language
 
 Substitua os valores pelas credenciais dos recursos Azure criados para o projeto.
 
-**Importante:** nunca publique o arquivo `.env` ou suas chaves no GitHub.
+**Importante:** nunca publique o arquivo `.env` ou suas chaves no GitHub. As credenciais devem permanecer apenas no ambiente local.
 
 ### Execução
 
@@ -201,7 +232,7 @@ A interface estará disponível localmente em:
 http://localhost:8501
 ```
 
-## 7. Resultados experimentais
+## 8. Resultados experimentais
 
 O protótipo permite executar análises independentes e consolidar os resultados em uma única interface.
 
@@ -214,9 +245,11 @@ Entre os cenários demonstrados estão:
 - Identificação de divergências em registros de administração de medicamentos.
 - Consolidação de ocorrências em relatórios multimodais.
 
+Os testes e resultados observados estão detalhados no arquivo [Resultados Experimentais](docs/resultados_experimentais.md).
+
 Os dados utilizados nas demonstrações incluem cenários sintéticos e gravações de teste. Os resultados dependem dos arquivos e parâmetros utilizados em cada execução.
 
-## 8. Limitações e considerações
+## 9. Limitações e considerações
 
 O MedMonitor AI é um protótipo acadêmico desenvolvido para demonstrar conceitos de inteligência artificial e processamento multimodal.
 
@@ -230,9 +263,11 @@ A análise de movimentos utiliza estimativas de pose e critérios experimentais 
 
 A análise de prescrições utiliza dados simulados e não contempla todas as regras e exceções de um ambiente hospitalar real.
 
+O protótipo não realiza integração com sistemas hospitalares nem envia notificações automáticas para equipes médicas.
+
 Qualquer utilização em ambiente clínico exigiria validação especializada, avaliação de segurança, privacidade, desempenho e conformidade regulatória.
 
-## 9. Trabalhos futuros
+## 10. Trabalhos futuros
 
 - Aprimorar a fusão de informações entre os diferentes módulos.
 - Implementar histórico persistente de pacientes e ocorrências.
@@ -242,7 +277,7 @@ Qualquer utilização em ambiente clínico exigiria validação especializada, a
 - Avaliar os modelos com conjuntos de dados reais e devidamente autorizados.
 - Desenvolver mecanismos de auditoria e rastreabilidade.
 
-## 10. Contexto acadêmico
+## 11. Contexto acadêmico
 
 Projeto desenvolvido como parte do **Tech Challenge – Fase 4**, da pós-graduação em Inteligência Artificial para Desenvolvedores da FIAP.
 
